@@ -1,5 +1,6 @@
 package com.example.chat
 
+import android.app.Activity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -45,6 +46,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.google.firebase.auth.PhoneAuthOptions
+import java.util.concurrent.TimeUnit
 
 
 @Composable
@@ -239,6 +242,7 @@ LaunchedEffect(authState) {
 
             Button(
                 onClick = {
+                    onNavigateToOtp()
                     viewModel.signup( email, password, fullName, confirmPassword)
                 },
                 colors = ButtonDefaults.buttonColors(
@@ -295,3 +299,4 @@ LaunchedEffect(authState) {
         )
     }
 }
+

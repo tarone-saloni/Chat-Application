@@ -60,8 +60,22 @@ val navController = rememberNavController()
 
         composable("sign_up"){
             CreateAccount(
+                onNavigateToOtp = {
+                    navController.navigate("otp/${it}")
+                },
                 onLoginClick = {
                     navController.popBackStack()
+                }
+            )
+
+        }
+
+        composable ("otp/{verificationId"){ backStackEntry ->
+            val verificationId = backStackEntry.arguments?.getString("verificationId")
+            CustomOtpScreen(
+                verificationId = verificationId ?: "",
+                onVerifiedSuccess = {
+                    navController.navigate("starting")
                 }
             )
 
